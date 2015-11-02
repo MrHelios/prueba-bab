@@ -1,0 +1,78 @@
+<html>
+{% load staticfiles %}
+	<title>Motor: Phaser1.</title>
+<script src="{% static 'Phaser/phaser.js' %}"></script>
+
+<head>
+</head>
+
+<body>
+</body>
+
+<script>
+	// Ultima modificacion: 29/10/2015
+	// Escenario rougue-style.
+
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',{
+		preload:preload, create:create});
+
+	function preload() {
+		game.load.image('mario' ,"{% static 'Phaser/phaser1/mario.png' %}");
+		game.load.image('piso'  ,"{% static 'Phaser/phaser1/madera.jpg' %}");
+		game.load.image('hojas_verdes' ,"{% static 'Phaser/phaser1/hojas_verdes.jpg' %}");
+		game.load.image('muro'  ,"{% static 'Phaser/phaser1/ladrillo.jpg' %}");
+	}
+
+	var imagen;
+	var fondo;
+	var jardin;
+	var muros;
+
+	function create() {
+	
+		// Agrego una imagen:
+		// El orden importa.
+
+		// Imagen 1:
+		jardin = game.add.sprite(94,94,'hojas_verdes');
+		// Otra forma de escalar una imagen.
+		jardin.scale.setTo(0.94,1.25);
+
+		// Imagen 2:
+		for (var j=0; j<=4 ; j++) {
+			for (var i=0; i<=4 ; i++) {
+				fondo = game.add.sprite(100+i*100,100+j*100,'piso');
+				fondo.setScaleMinMax(0.1,0.15);
+			}
+		}
+
+		// Imagen 3:
+		imagen = game.add.sprite(400,300,'mario');
+		// Modifico su escala.
+		imagen.setScaleMinMax(0.1,0.15);
+
+		// Image 4:
+		// Muros de piedra:
+		for (var i=0; i<14 ; i++) {
+			muros = game.add.sprite(85+i*30,85,'muro');
+			muros.scale.setTo(0.05,0.05);
+			}
+
+		for (var i=0; i<23 ; i++) {
+			muros = game.add.sprite(85,85+i*22,'muro');
+			muros.scale.setTo(0.05,0.05);
+			}
+
+		for (var i=0; i<17 ; i++) {
+			muros = game.add.sprite(85+i*30,85+22*22,'muro');
+			muros.scale.setTo(0.05,0.05);
+			}
+
+		for (var i=0; i<23 ; i++) {
+			muros = game.add.sprite(85+16*30,85+i*22,'muro');
+			muros.scale.setTo(0.05,0.05);
+			}
+		}
+</script>
+
+</html>
