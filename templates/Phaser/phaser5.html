@@ -14,9 +14,9 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 
 function preload() {
 
-    game.load.image('arrow', "{% static 'Phaser/misil.jpg' %}");
-    game.load.image('bullet', "{% static 'Phaser/phaser1/madera.jpg' %}");
-    
+    game.load.image('arrow', "{% static 'Imagenes/misil.jpg' %}");
+    game.load.image('bullet', "{% static 'Imagenes/madera.jpg' %}");
+
 }
 
 var sprite;
@@ -35,11 +35,11 @@ function create() {
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
-    
+
     bullets.createMultiple(50, 'bullet');
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
-    
+
     sprite = game.add.sprite(400, 300, 'arrow');
     sprite.anchor.set(0.5);
 

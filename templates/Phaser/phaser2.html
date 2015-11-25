@@ -10,10 +10,10 @@
 </body>
 
 <script>
-	// Ultima modificacion: 30/10/2015
+	// Ultima modificacion: 25/11/2015
 	// Mario tiene movimiento mediante el teclado.
 	// Atencion: Solo hay movimiento en una direccion.
-	// Agregue cambio de imagen con el movimiento de Mario.	
+	// Agregue cambio de imagen con el movimiento de Mario.
 
 	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
 		preload:preload, create:create, update:update, render:render
@@ -21,12 +21,12 @@
 
 	function preload() {
 		// Trabajar con mas spritesheet.
-		game.load.spritesheet('amigo',"{% static 'Phaser/Mario_mov.png' %}",200,390);
+		game.load.spritesheet('amigo',"{% static 'Imagenes/Mario_mov.png' %}",200,390);
 	}
 
 	var player;
 	var cursors;
-	var facing = 'left';	
+	var facing = 'left';
 
 	function create() {
 		// Mario
@@ -35,7 +35,7 @@
 
 		// Necesario para habilitar el movimiento por teclado.
 		game.physics.enable(player, Phaser.Physics.ARCADE);
-		
+
 		player.animations.add('left' , [0], 1, true);
 		player.animations.add('right', [1], 1, true);
 
@@ -43,7 +43,7 @@
 		cursors = game.input.keyboard.createCursorKeys();
 	}
 
-	function update() {		
+	function update() {
 
     	player.body.velocity.x = 0;
 
@@ -66,7 +66,7 @@
     	else {
         	if (facing != 'idle') {
 	            player.animations.stop();
-            	
+
             	if (facing == 'left') {
                 	player.frame = 0;
                 }

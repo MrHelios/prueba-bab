@@ -15,7 +15,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # prueba1 -> Usa motor grafico: BabylonJS
 # prueba2 -> Usa motor grafico: Phaser
 
@@ -27,7 +26,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'prueba1',
-    'prueba2',    
+    'prueba2',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -10,7 +10,7 @@
 </body>
 
 <script>
-	// Ultima modificacion 30/10
+	// Ultima modificacion 25/11/2015
 	// Trabajo con la animacion.
 	// Mario se mueve para todo los puntos cardinales.
 	// Para derecha e izquierda su imagen se modifica.
@@ -22,11 +22,11 @@
 	function preload() {
 		// Personaje.
 		// Seleccionar spritesheet para el personaje:
-		game.load.spritesheet('mario' ,"{% static 'Phaser/Mario_mov.png' %}",200,390);
+		game.load.spritesheet('mario' ,"{% static 'Imagenes/Mario_mov.png' %}",200,390);
 		// Imagenes del terreno.
-		game.load.image('piso'  ,"{% static 'Phaser/phaser1/madera.jpg' %}");
-		game.load.image('hojas_verdes' ,"{% static 'Phaser/phaser1/hojas_verdes.jpg' %}");
-		game.load.image('muro'  ,"{% static 'Phaser/phaser1/ladrillo.jpg' %}");
+		game.load.image('piso'  ,"{% static 'Imagenes/madera.jpg' %}");
+		game.load.image('hojas_verdes' ,"{% static 'Imagenes/phaser1/hojas_verdes.jpg' %}");
+		game.load.image('muro'  ,"{% static 'Imagenes/ladrillo.jpg' %}");
 	}
 
 	var fondo;
@@ -85,17 +85,17 @@
 		// PARTE 2:
 		// Necesario para habilitar el movimiento por teclado.
 		game.physics.enable(player, Phaser.Physics.ARCADE);
-		
+
 		player.animations.add('left' , [0], 1, true);
 		player.animations.add('right', [1], 1, true);
-		
+
 		// Movimiento de Mario.
 		cursors = game.input.keyboard.createCursorKeys();
 
 		}
 
-	function update() {		
-		
+	function update() {
+
     	player.body.velocity.x = 0;
     	player.body.velocity.y = 0;
 
@@ -109,13 +109,13 @@
         		if (facing != 'left') {
             		player.animations.play('left');
             		facing = 'left';
-        		}        		
+        		}
         	}
         	else {
         		player.body.velocity.x = 0;
         	}
     	}
-    	
+
     	else if (cursors.right.isDown) {
 
     		if (player.body.position.x <= 463) {
@@ -130,33 +130,33 @@
         		player.body.velocity.x = 0;
         	}
     	}
-    	
+
     	else if (cursors.up.isDown) {
 
     		if (player.body.position.y >= 76) {
         		player.body.velocity.y = -150;
         		}
-        	
+
         	else {
         		player.body.velocity.y = 0;
         		}
         	}
-    	
+
     	else if (cursors.down.isDown) {
 
     		if (player.body.position.y <= 412) {
-    			player.body.velocity.y = 150;	
+    			player.body.velocity.y = 150;
     		}
     		else {
-    			player.body.velocity.y = 0;	
+    			player.body.velocity.y = 0;
     		}
-        	
+
         	}
 
     	else {
         	if (facing != 'idle') {
 	            player.animations.stop();
-            	
+
             	if (facing == 'left') {
                 	player.frame = 0;
                 }
@@ -170,7 +170,7 @@
 	}
 
 	function render() {
-		
+
 	}
 </script>
 
